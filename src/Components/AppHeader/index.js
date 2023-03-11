@@ -1,5 +1,5 @@
 function AppHeader() {
-    return (  <div>Header</div>);
+    return (  <div className="AppHeader">Header</div>);
 }
 
 export default AppHeader;
