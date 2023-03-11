@@ -26,9 +26,13 @@
   flex: 1;
   justify-content: flex-start;
   align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 .SideBar{
-
+  height: 100vh;
+}
+.SideBarVertical{
+  height: 100%;
 }
 
 .PageContent{

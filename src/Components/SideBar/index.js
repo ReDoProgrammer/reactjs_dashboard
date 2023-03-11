@@ -18,7 +18,8 @@ function SideBar() {
 
     const navigate = useNavigate();
     return (<div className="SideBar">
-        <Menu 
+        <Menu className="SideBarVertical"
+        mode='vertical'
         onClick={item=>{
             navigate(item.key)
         }}
