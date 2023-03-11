@@ -1,5 +1,5 @@
 function AppFooter() {
-    return (  <div className="AppFoter">Footer</div>);
+    return (  <div className="AppFooter">Footer</div>);
 }
 
 export default AppFooter;
