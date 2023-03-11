@@ -1,6 +1,8 @@
-import { Card, Space, Typography, Statistic } from 'antd';
+import { Card, Space, Typography, Statistic, Table } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { DollarCircleOutlined, ShoppingFilled, UserOutlined } from '@ant-design/icons/lib/icons';
+import {getRecentOrders} from '../../../API'
+import  { useEffect, useState } from 'react';
 function Dashboard() {
     return (<div>
         <Typography.Title level={4}>Dashboard</Typography.Title>
@@ -40,6 +42,9 @@ function Dashboard() {
                 padding:8
             }}/>} />
         </Space>
+        <Space>
+            <RecentOrders/>
+        </Space>
     </div>);
 }
 
@@ -48,8 +53,39 @@ function DashboardCard({ title, value, icon }) {
         <Space direction='horizontal'>
             {icon}
             <Statistic title={title} value={value} />
-        </Space>
+        </Space>        
     </Card>)
+}
+function RecentOrders(){
+    const [dataSource, setDataSource] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+      setLoading(true);    
+      getRecentOrders().then(rs=>{
+        setDataSource(rs.products);
+        setLoading(false);
+      })
+    }, [])
+    
+    return <Table
+        columns={[
+            {
+                title:'Title',
+                dataIndex:'title'
+            },
+            {
+                title:'Price',
+                dataIndex:'discountedPrice'
+            },
+            {
+                title:'Qty',
+                dataIndex:'quantity'
+            }           
+        ]}
+        loading={loading}
+        dataSource={dataSource}
+    ></Table>
 }
 
 export default Dashboard;
