@@ -1,6 +1,7 @@
+import {Typography} from 'antd';
 function Order() {
     return (  <div>
-        orders
+        <Typography.Title level={4}>Orders</Typography.Title>
     </div>);
 }
 

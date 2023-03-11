@@ -1,5 +1,8 @@
+import {Typography} from 'antd';
 function Dashboard() {
-    return ( <div>Dashboard</div> );
+    return ( <div>
+        <Typography.Title level={4}>Dashboard</Typography.Title>
+    </div> );
 }
 
 export default Dashboard;
