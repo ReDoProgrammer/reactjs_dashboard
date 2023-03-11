@@ -1,4 +1,4 @@
-import { Table, Typography,Space, Avatar, Rate } from 'antd';
+import { Table, Typography,Space } from 'antd';
 import { getOrder } from '../../../API';
 import {useState, useEffect } from 'react';
 function Order() {
