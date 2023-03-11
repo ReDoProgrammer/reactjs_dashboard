@@ -144,7 +144,6 @@ function DasboardChart() {
                 ],
             };
             setRevenueData(dataSource);
-            console.log(dataSource);
         })   
     }, [])
 
@@ -161,7 +160,7 @@ function DasboardChart() {
         },
     };
    
-    return <Bar options={options} data={revenueData} />;
+    return <Card style={{width:550, height:400}}><Bar options={options} data={revenueData} /></Card>;
 }
 
 export default Dashboard;
