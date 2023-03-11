@@ -1,4 +1,4 @@
-import { Table, Typography,Space, Avatar } from 'antd';
+import { Table, Typography,Space, Avatar, Rate } from 'antd';
 import { getInventory } from '../../../API';
 import {useState, useEffect } from 'react';
 function Inventory() {
@@ -37,7 +37,10 @@ function Inventory() {
                 },
                 {
                     label: 'Rating',
-                    dataIndex: 'rating'
+                    dataIndex: 'rating',
+                    render: rating=>{
+                        return <Rate value={rating}/>
+                    }
                 },
                 {
                     label: 'Stock',
