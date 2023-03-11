@@ -1,4 +1,5 @@
 import { Menu } from 'antd';
+import {useNavigate} from 'react-router-dom'
 import {
     AppstoreOutlined,
     ShopOutlined,
@@ -6,10 +7,11 @@ import {
     UserOutlined
 } from '@ant-design/icons';
 function SideBar() {
+    const navigate = useNavigate();
     return (<div className="SideBar">
         <Menu 
         onClick={item=>{
-            //item.key
+            navigate(item.key)
         }}
         items={[
             {
