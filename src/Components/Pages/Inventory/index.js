@@ -30,7 +30,10 @@ function Inventory() {
                 },
                 {
                     label: 'Price',
-                    dataIndex: 'price'
+                    dataIndex: 'price',
+                    render: value=>{
+                        return <span>${value}</span>
+                    }
                 },
                 {
                     label: 'Rating',
