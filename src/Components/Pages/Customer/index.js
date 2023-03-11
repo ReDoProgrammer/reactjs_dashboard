@@ -68,7 +68,7 @@ function Customer() {
             ]}
             dataSource={dataSource}
             loading={loading}
-            pagination={{pageSize:10}}
+            pagination={{pageSize:5}}
         ></Table>
     </Space>);
 }
