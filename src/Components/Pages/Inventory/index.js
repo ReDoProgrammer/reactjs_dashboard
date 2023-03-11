@@ -39,7 +39,7 @@ function Inventory() {
                     label: 'Rating',
                     dataIndex: 'rating',
                     render: rating=>{
-                        return <Rate value={rating}/>
+                        return <Rate value={rating} allowHalf/>
                     }
                 },
                 {
