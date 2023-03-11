@@ -58,6 +58,7 @@ function Inventory() {
             ]}
             dataSource={dataSource}
             loading={loading}
+            pagination={{pageSize:10}}
         ></Table>
     </Space>);
 }
