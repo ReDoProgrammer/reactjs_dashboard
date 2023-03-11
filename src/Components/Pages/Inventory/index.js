@@ -18,47 +18,47 @@ function Inventory() {
         <Table
             columns={[
                 {
-                    label: 'Thumbnail',
+                    title: 'Thumbnail',
                     dataIndex: 'thumbnail',
                     render: link=>{
                         return <Avatar src={link}/>
                     }
                 },
                 {
-                    label: 'Title',
+                    title: 'Title',
                     dataIndex: 'title'
                 },
                 {
-                    label: 'Price',
+                    title: 'Price',
                     dataIndex: 'price',
                     render: value=>{
                         return <span>${value}</span>
                     }
                 },
                 {
-                    label: 'Rating',
+                    title: 'Rating',
                     dataIndex: 'rating',
                     render: rating=>{
                         return <Rate value={rating} allowHalf disabled/>
                     }
                 },
                 {
-                    label: 'Stock',
+                    title: 'Stock',
                     dataIndex: 'stock'
                 },
                 
                 {
-                    label: 'Brand',
+                    title: 'Brand',
                     dataIndex: 'brand'
                 },
                 {
-                    label: 'Category',
+                    title: 'Category',
                     dataIndex: 'category'
                 }
             ]}
             dataSource={dataSource}
             loading={loading}
-            pagination={{pageSize:10}}
+            pagination={{pageSize:5}}
         ></Table>
     </Space>);
 }
