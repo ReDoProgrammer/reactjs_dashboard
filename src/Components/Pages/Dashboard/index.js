@@ -1,7 +1,7 @@
 import { Card, Space, Typography, Statistic, Table } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { DollarCircleOutlined, ShoppingFilled, UserOutlined } from '@ant-design/icons/lib/icons';
-import { getRecentOrders,getRevenue } from '../../../API'
+import { getCustomer, getRecentOrders,getRevenue,getOrder,getInventory } from '../../../API'
 import { useEffect, useState } from 'react';
 
 import {
@@ -27,12 +27,45 @@ ChartJS.register(
 
 
 function Dashboard() {
+    const [orders, setorders] = useState(0);
+    const [customers, setcustomers] = useState(0);
+    const [revenue, setrevenue] = useState(0);
+    const [inventory, setinventory] = useState(0);
+
+    useEffect(() => {
+      getCustomer()
+      .then(res=>{
+        setcustomers(res.total);
+      })
+    }, [])
+
+    useEffect(() => {
+        getOrder()
+        .then(res=>{
+            setorders(res.total);
+            setrevenue(res.discountedTotal);
+        })
+    }, [])
+    
+
+    useEffect(() => {
+        getInventory()
+        .then(res=>{
+            setinventory(res.total)
+        })
+    }, [])
+
+ 
+    
+    
+    
+
     return (<div>
         <Space size={20} direction="vertical">
             <Typography.Title level={4}>Dashboard</Typography.Title>
             <Space direction='horizontal'>
                 <DashboardCard title={'Orders'}
-                    value={12345}
+                    value={orders}
                     icon={<ShoppingCartOutlined
                         style={{
                             color: 'green',
@@ -43,7 +76,7 @@ function Dashboard() {
                         }}
                     />}
                 />
-                <DashboardCard title={'Customers'} value={532} icon={<UserOutlined
+                <DashboardCard title={'Customers'} value={customers} icon={<UserOutlined
                     style={{
                         color: 'purple',
                         backgroundColor: 'rgba(0,255,255,0.25)',
@@ -58,7 +91,7 @@ function Dashboard() {
                     fontSize: 24,
                     padding: 8
                 }} />} />
-                <DashboardCard title={'Revenue'} value={3563} icon={<DollarCircleOutlined style={{
+                <DashboardCard title={'Revenue'} value={revenue} icon={<DollarCircleOutlined style={{
                     color: 'red',
                     backgroundColor: 'rgba(255,0,0,0.25)',
                     borderRadius: 20,
