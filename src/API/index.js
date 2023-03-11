@@ -12,3 +12,7 @@ export const getInventory = ()=>{
 export const getOrder = ()=>{
     return fetch('https://dummyjson.com/carts/1').then(res => res.json());
 }
+
+export const getCustomer=()=>{
+    return fetch('https://dummyjson.com/users').then(res => res.json());
+}
