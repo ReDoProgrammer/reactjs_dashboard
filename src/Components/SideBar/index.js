@@ -1,4 +1,10 @@
 import { Menu } from 'antd';
+import {
+    AppstoreOutlined,
+    ShopOutlined,
+    ShoppingCartOutlined,
+    UserOutlined
+} from '@ant-design/icons';
 function SideBar() {
     return (<div className="SideBar">
         <Menu 
@@ -8,19 +14,23 @@ function SideBar() {
         items={[
             {
                 label: 'Dashboard',
-                key: '/'
+                key: '/',
+                icon:<AppstoreOutlined/>
             },
             {
                 label: 'Inventoy',
-                key: '/inventory'
+                key: '/inventory',
+                icon:<ShopOutlined/>
             },
             {
                 label: 'Orders',
-                key: '/orders'
+                key: '/orders',
+                icon:<ShoppingCartOutlined/>
             },
             {
                 label: 'Customers',
-                key: '/customers'
+                key: '/customers',
+                icon:<UserOutlined/>
             }
         ]}>
 
