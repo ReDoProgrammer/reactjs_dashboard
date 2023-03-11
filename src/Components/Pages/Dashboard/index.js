@@ -65,7 +65,7 @@ function RecentOrders() {
     useEffect(() => {
         setLoading(true);
         getRecentOrders().then(rs => {
-            setDataSource(rs.products);
+            setDataSource(rs.products.splice(0,3));
             setLoading(false);
         })
     }, [])
