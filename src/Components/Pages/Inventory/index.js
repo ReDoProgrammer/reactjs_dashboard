@@ -1,4 +1,4 @@
-import { Table, Typography,Space } from 'antd';
+import { Table, Typography,Space, Avatar } from 'antd';
 import { getInventory } from '../../../API';
 import {useState, useEffect } from 'react';
 function Inventory() {
@@ -18,6 +18,13 @@ function Inventory() {
         <Table
             columns={[
                 {
+                    label: 'Thumbnail',
+                    dataIndex: 'thumbnail',
+                    render: link=>{
+                        return <Avatar src={link}/>
+                    }
+                },
+                {
                     label: 'Title',
                     dataIndex: 'title'
                 },
@@ -33,10 +40,7 @@ function Inventory() {
                     label: 'Stock',
                     dataIndex: 'stock'
                 },
-                {
-                    label: 'Thumbnail',
-                    dataIndex: 'thumbnail'
-                },
+                
                 {
                     label: 'Brand',
                     dataIndex: 'brand'
