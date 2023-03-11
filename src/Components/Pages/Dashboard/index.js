@@ -1,7 +1,7 @@
 import { Card, Space, Typography, Statistic, Table } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { DollarCircleOutlined, ShoppingFilled, UserOutlined } from '@ant-design/icons/lib/icons';
-import { getRecentOrders } from '../../../API'
+import { getRecentOrders,getRevenue } from '../../../API'
 import { useEffect, useState } from 'react';
 
 import {
@@ -119,6 +119,35 @@ function RecentOrders() {
 }
 
 function DasboardChart() {
+    const [revenueData, setRevenueData] = useState({
+        labels:[],
+        datasets:[]
+    });
+
+    useEffect(() => {
+        getRevenue()
+        .then(rs=>{
+            const labels = rs.carts.map(cart=>{
+                return `User-${cart.userId}`;
+            })
+            const data = rs.carts.map(cart=>{
+                return cart.discountedTotal;
+            })
+            const dataSource = {
+                labels,
+                datasets: [
+                    {
+                        label: 'Revenue',
+                        data: data,
+                        backgroundColor: 'rgba(255, 0, 0, 1)',
+                    }
+                ],
+            };
+            setRevenueData(dataSource);
+            console.log(dataSource);
+        })   
+    }, [])
+
     const options = {
         responsive: true,
         plugins: {
@@ -131,25 +160,8 @@ function DasboardChart() {
             },
         },
     };
-
-    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-    const data = {
-        labels,
-        datasets: [
-            {
-                label: 'Dataset 1',
-                data: labels.map(() => Math.random()*1000),
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-            },
-            {
-                label: 'Dataset 2',
-                data: labels.map(() => Math.random()*1000),
-                backgroundColor: 'rgba(53, 162, 235, 0.5)',
-            },
-        ],
-    };
-    return <Bar options={options} data={data} />;
+   
+    return <Bar options={options} data={revenueData} />;
 }
 
 export default Dashboard;
